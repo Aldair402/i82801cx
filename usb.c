@@ -23,9 +23,23 @@ static struct device_operations usb_ops = {
 	.enable = i82801cx_enable,
 };
 
-/* 82801DB/DBL/DBM USB1 */
+/* 82801CA/CAM USB1 */
 static const struct pci_driver usb_driver_1 __pci_driver = {
 	.ops = &usb_ops,
 	.vendor = PCI_VID_INTEL,
-	.device = PCI_DID_INTEL_82801DB_USB1,
+	.device = PCI_DID_INTEL_82801CA_USB1,
+};
+
+/* 82801CA/CAM USB2 */
+static const struct pci_driver usb_driver_2 __pci_driver = {
+	.ops = &usb_ops,
+	.vendor = PCI_VID_INTEL,
+	.device = PCI_DID_INTEL_82801CA_USB2,
+};
+
+/* 82801CA/CAM USB3 */
+static const struct pci_driver usb_driver_3 __pci_driver = {
+	.ops = &usb_ops,
+	.vendor = PCI_VID_INTEL,
+	.device = PCI_DID_INTEL_82801CA_USB3,
 };
