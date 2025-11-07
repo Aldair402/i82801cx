@@ -51,16 +51,16 @@ static struct device_operations ide_ops = {
 	.enable = i82801cx_enable,
 };
 
-/* 82801DB */
-static const struct pci_driver i82801db_ide __pci_driver = {
+/* 82801CA */
+static const struct pci_driver i82801ca_ide __pci_driver = {
 	.ops = &ide_ops,
 	.vendor = PCI_VID_INTEL,
-	.device = 0x24cb,
+	.device = 0x248b,
 };
 
-/* 82801DBM */
-static const struct pci_driver i82801dbm_ide __pci_driver = {
+/* 82801CAM */
+static const struct pci_driver i82801cam_ide __pci_driver = {
 	.ops = &ide_ops,
 	.vendor = PCI_VID_INTEL,
-	.device = 0x24ca,
+	.device = 0x248a,
 };
