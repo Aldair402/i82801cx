@@ -14,6 +14,7 @@ void i82801cx_enable(struct device *dev)
 	uint16_t cur_disable_mask, new_disable_mask;
 
 //      all 82801dbm devices are in bus 0
+//		should be the same for 82801cam
 	unsigned int devfn = PCI_DEVFN(0x1f, 0);	// lpc
 	struct device *lpc_dev = pcidev_path_on_root(devfn);	// 0
 	if (!lpc_dev)
@@ -23,6 +24,8 @@ void i82801cx_enable(struct device *dev)
 	// NOTE: For ICH-4, only the following devices can be disabled:
 	//               D31: F0, F1, F3, F5, F6,
 	//               D29: F0, F1, F2, F7
+	// I don't care enough about this to fix it, and its probably the
+	// same anyways
 
 	if (PCI_SLOT(dev->path.pci.devfn) == 31) {
 		index = PCI_FUNC(dev->path.pci.devfn);
@@ -64,6 +67,6 @@ void i82801cx_enable(struct device *dev)
 }
 
 struct chip_operations southbridge_intel_i82801cx_ops = {
-	.name = "Intel ICH4/ICH4-M (82801Dx) Series Southbridge",
+	.name = "Intel ICH3/ICH3-M (82801Cx) Series Southbridge",
 	.enable_dev = i82801cx_enable,
 };
